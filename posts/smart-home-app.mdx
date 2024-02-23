@@ -1,0 +1,75 @@
+---
+title: Smart Home Application
+description: 'Es una aplicación web de una sola página con la que se pueden encender o apagar dispositivos eléctricos y luminarias que se encuentren conectados dentro del sistema domótico. Se pueden controlar los dispositivos de forma individual, según el tipo de dispositivo, según la habitación en la que se encuentran o todos los dispositivos al mismo tiempo. También cuenta un sistema de ambientes para personalizar aún más como se encienden o apagan diferentes dispositivos en conjunto.'
+date: Feb 21 2024
+---
+
+## Contexto y motivación
+
+La aplicación se desarrolla en el contexto del aumento de las casas inteligentes y como se pueden facilitar muchos procesos dentro de un hogar. Se tiene como motivación que los habitantes del hogar puedan interactuar con diferentes dispositivos eléctricos de la casa de forma remota usando su teléfono inteligente
+
+## Arquitectura y tecnologías
+
+La aplicación se desarrolló usando tecnologías Web como HTML, CSS y JavaScript, se utilizó la librería React para el desarrollo de las vistas de la aplicación, React Router para el manejo de las rutas y Redux para el manejo de un estado global de todos los diferentes componentes. Los componentes del sistema se actualizan usando el patrón observador gracias a React y Redux.
+
+Para el manejo y almacenamiento de los datos se utilizó Firebase Realtime Database y para alojar la aplicación se usó el servicio de Hosting de Firebase. La aplicación se comunica con Firebase a través del protocolo HTTPS usando la librería de Firebase que permite la actualización de los datos de la app de otros usuarios si uno hace algún cambio.
+
+## Características principales
+
+Se puede ingresar a la aplicación a través de este [enlace](https://proyecto-domotica-select.web.app/ 'Enlace para acceder a la aplicación').
+
+La aplicación cuenta con 3 pestañas principales por las que el usuario puede moverse usando la barra de navegación en la parte inferior de la pantalla
+
+- La pestaña de habitaciones en donde se muestran los diferentes dispositivos conectados al sistema clasificados por la habitación a la que pertenecen. Para interactuar con los dispositivos el usuario puede presionar el botón correspondiente, dentro del cual el color verde indica que está encendido actualmente y el color rojo indica que está apagado. Desde esta pestaña el usuario puede encender o apagar dispositivos de forma individual, según la habitación o según el tipo de dispositivo dentro de una habitación específica.
+
+                                  ![Rooms tab](/images/smart-home-app-Imagen1.png)
+
+  También puede ingresar a la página de cada habitación en donde se muestra más información sobre esta, mostrando el nombre de la habitación y los dispositivos que pertenecen a esta. El usuario puede editar la habitación presionando el botón correspondiente o incluso eliminar dicha habitación, se debe tener en cuenta que si se elimina una habitación se eliminan todos los dispositivos que pertenecen a ella.
+
+  ![Room info page](/images/smart-home-app-Imagen2.png)
+
+  Finalmente, el usuario podría añadir una nueva habitación al presionar el botón de más opciones en la parte superior derecha.
+
+  ![Add new room page](/images/smart-home-app-Imagen3.png)
+
+- La pestaña de dispositivos es muy similar a la de habitaciones, la principal diferencia es que se muestra la lista de todos los dispositivos conectados al sistema de forma conjunta, permitiendo al usuario poder encender o apagar los dispositivos de forma individual, según su tipo o todos al mismo tiempo.
+
+  ![Image 4](/images/smart-home-app-Imagen4.png)
+
+  También se puede acceder a la página de información de cada dispositivo en el que se muestra su nombre, su identificador, a que habitación pertenece, que tipo de dispositivo es y su estado actual, el usuario puede encender o apagar un dispositivo desde su página de información, así como editarlo o eliminarlo.
+
+  ![Image 5](/images/smart-home-app-Imagen5.png)
+
+  El usuario puede añadir un nuevo dispositivo al presionar el botón de más opciones en la parte superior derecha de la pestaña dispositivos.
+
+  ![Image 6](/images/smart-home-app-Imagen6.png)
+
+- La pestaña de ambientes permite al usuario activar ambientes que el mismo haya personalizado previamente, permitiéndolo encender o apagar varios dispositivos al mismo tiempo con mayor precisión. Para activar un ambiente solo debe presionar el botón que se encuentra a la derecha de su nombre.
+
+  ![Image 7](/images/smart-home-app-Imagen7.png)
+
+  Para ver más información del ambiente el usuario puede presionar el nombre de dicho ambiente, en esta nueva ventana se mostrará el nombre de dicho ambiente, su identificador, con que dispositivos interactúa dicho ambiente y si se activa el ambiente a que estado deben cambiar estos dispositivos. También puede editar esta configuración presionando el botón de editar o, si desea, eliminar el ambiente.
+
+  ![Image 8](/images/smart-home-app-Imagen8.png)
+
+  Para añadir un nuevo ambiente el usuario debe presionar el botón de más opciones en la parte superior derecha y seleccionar la opción indicada, desde aquí el usuario puede definir a su gusto el nombre del ambiente, con que dispositivos va a interactuar y a que estado van a cambiar dichos dispositivos cuando se active el ambiente.
+
+  ![Image 9](/images/smart-home-app-Imagen9.png)
+
+## Código fuente y estructura del proyecto
+
+El código fuente del proyecto se encuentra en [Github](https://github.com/rafaelmber/control-monitoreo-domotica 'Repositiorio del proyecto').
+
+El código de la aplicación se encuentra dentro de la carpeta app. Tanto las vista, como los componentes, el código de Firebase y el estado de Redux se encuentran dentro de la carpeta src.
+
+Los componentes de React se almacenan en una carpeta según su función y el rol que desempeñan en la vista. Cada componente se almacena en una carpeta cada uno en donde se divide en almenos dos archivos diferentes, separando el código de React de los estilos del componente.
+
+El estado global de la aplicación definido con Redux se almacena en la carpeta store, cada tipo de elemento dentro de la aplicación tiene su propia carpeta en la que se separa en dos archivos, sus actions y sus reducers.
+
+En la carpeta views se almacenan las diferentes paginas de la aplicación, clasificadas según la pestaña a la que pertenecen.
+
+## Conclusiones
+
+La aplicación desarrollada es bastante intuitiva y permite al usuario poder encender y apagar los diferentes dispositivos conectados al sistema de una forma fácil y sencilla. También dando una capa de personalización en la que el usuario puede interactuar con múltiples dispositivos al mismo tiempo.
+
+Es necesario agregar una capa de seguridad a la aplicación para que solo los usuarios autorizados puedan manipular un determinado sistema, así como permitir la ampliación de la aplicación con múltiples sistemas y múltiples usuarios.
